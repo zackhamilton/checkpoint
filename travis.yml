@@ -1,0 +1,19 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t zackhamilton/react-test -f ./client/Dockerfile.dev
+script:
+  - docker run -e CI=true zackhamilton/react-test npm test
+after_success:
+  - docker build -t zackhamilton/checkpoint-client ./client
+  - docker build -t zackhamilton/checkpoint-nginx ./nginx
+  - docker build -t zackhamilton/checkpoint-server ./server
+  - docker build -t zackhamilton/checkpoint-worker ./worker
+# log in to docker CLI
+- echo "$DOCKER_PASS" | docker login -u "DOCKER_ID" --password-stdin
+- docker push zackhamilton/checkpoint-client
+- docker push zackhamilton/checkpoint-nginx
+- docker push zackhamilton/checkpoint-server
+- docker push zackhamilton/checkpoint-worker
