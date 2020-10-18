@@ -17,14 +17,14 @@
     },
     {
       "name": "worker",
-      "image": "zackhamilton/worker",
+      "image": "zackhamilton/checkpoint-worker",
       "hostname": "worker",
       "essential": "false",
       "memory": 128
     },
     {
       "name": "nginx",
-      "image": "zackhamilton/nginx",
+      "image": "zackhamilton/checkpoint-nginx",
       "hostname": "nginx",
       "essential": "true",
       "memory": 128,
