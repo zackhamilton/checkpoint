@@ -1,0 +1,37 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions":[
+    {
+      "name": "client",
+      "image": "zackhamilton/checkpoint-client",
+      "hostname": "client",
+      "essential": "false"
+    },
+    {
+      "name": "server",
+      "image": "zackhamilton/checkpoint-server",
+      "hostname": "api",
+      "essential": "false"
+    },
+    {
+      "name": "worker",
+      "image": "zackhamilton/worker",
+      "hostname": "worker",
+      "essential": "false"
+    },
+    {
+      "name": "nginx",
+      "image": "zackhamilton/nginx",
+      "hostname": "nginx",
+      "essential": "true",
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+
+  ]
+}

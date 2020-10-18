@@ -19,3 +19,15 @@ after_success:
   - docker push zackhamilton/checkpoint-nginx
   - docker push zackhamilton/checkpoint-server
   - docker push zackhamilton/checkpoint-worker
+
+  deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'checkpoint-docker'
+  env: 'CheckpointDocker-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-849119748910'
+  bucket_path: 'checkoit-docker'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
