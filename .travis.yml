@@ -26,7 +26,7 @@ deploy:
   app: 'checkpoint-docker'
   env: 'CheckpointDocker-env'
   bucket_name: 'elasticbeanstalk-us-east-1-849119748910'
-  bucket_path: 'checkoit-docker'
+  bucket_path: 'checkpoint-docker'
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
