@@ -20,7 +20,7 @@ after_success:
   - docker push zackhamilton/checkpoint-server
   - docker push zackhamilton/checkpoint-worker
 
-  deploy:
+deploy:
   provider: elasticbeanstalk
   region: 'us-east-1'
   app: 'checkpoint-docker'
